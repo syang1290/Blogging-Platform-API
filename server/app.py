@@ -120,6 +120,25 @@ def get_post(post_id):
 
     return jsonify(dict(post)), 200
 
+@app.route('/posts', methods=['GET'])
+
+def get_posts():
+    """
+    Retreives all blog posts, with optional search functionality based on a query parameter 'term'.
+    """
+    conn = get_db_connection()
+    term = request.args.get('term')
+    
+    if term:
+        query = "SELECT * FROM posts WHERE title LIKE ? OR content LIKE ? OR category LIKE ?"
+        search_pattern = f"%{term}%"
+        posts = conn.execute(query, (search_pattern, search_pattern, search_pattern)).fetchall()
+    else:
+        posts = conn.execute('SELECT * FROM posts').fetchall()
+        
+    conn.close()
+    
+    return jsonify([dict(post) for post in posts]), 200
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
