@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <nav style={styles.nav}>
-      <div style={styles.logo}>UCI Blog Admin</div>
+      <div >Blogging Platform</div>
       <ul style={styles.navLinks}>
         <li><Link to="/" style={styles.link}>Home</Link></li>
         <li><Link to="/create" style={styles.link}>New Post</Link></li>
