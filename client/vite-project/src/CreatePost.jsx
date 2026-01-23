@@ -12,7 +12,7 @@ function CreatePost() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     })
-    .then(() => navigate('/')) // Redirect to home after success
+    .then(() => navigate('/')) 
     .catch(err => console.error(err));
   };
 
@@ -30,7 +30,7 @@ function CreatePost() {
           onChange={(e) => setFormData({...formData, content: e.target.value})}
           style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
         />
-        <button type="submit" style={{ padding: '10px', background: '#2563eb', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        <button type="submit">
           Publish Post
         </button>
       </form>
